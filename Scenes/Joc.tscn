@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://y5ioubavxr3w"]
+
+[ext_resource type="PackedScene" uid="uid://bj30njbmgxaqa" path="res://Scenes/jugador.tscn" id="1_6ghnx"]
+[ext_resource type="Texture2D" uid="uid://dxcg36kd14jg6" path="res://Imatges/Ice-background.jpg" id="1_nm3pk"]
+[ext_resource type="Script" uid="uid://muvqsjsa8d4n" path="res://Scripts/jugador.gd" id="2_nm3pk"]
+[ext_resource type="PackedScene" uid="uid://bdgu3dnjhglwt" path="res://Scenes/obstacle.tscn" id="3_jg0rr"]
+[ext_resource type="Script" uid="uid://2ghl7t3ax2pw" path="res://Scripts/obstacle.gd" id="4_wpljn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(280, 434)
+scale = Vector2(0.238766, 0.268572)
+texture = ExtResource("1_nm3pk")
+
+[node name="Jugador" parent="." instance=ExtResource("1_6ghnx")]
+position = Vector2(-105, 412)
+script = ExtResource("2_nm3pk")
+
+[node name="Camera2D" type="Camera2D" parent="Jugador"]
+
+[node name="Obstacle" parent="." instance=ExtResource("3_jg0rr")]
+position = Vector2(-347, -161)
+script = ExtResource("4_wpljn")

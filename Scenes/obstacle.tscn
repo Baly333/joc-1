@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdgu3dnjhglwt"]
+
+[ext_resource type="Texture2D" uid="uid://bj8t01ww1jt5g" path="res://Imatges/Icespike.png" id="1_15o2q"]
+
+[node name="Obstacle" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(368.695, 129.229)
+rotation = 3.14159
+scale = Vector2(0.252518, 0.318993)
+texture = ExtResource("1_15o2q")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(382, 111, 388, 115, 391, 115, 393, 111, 393, 106, 386, 97, 387, 95, 392, 94, 391, 89, 364, 88, 359, 92, 355, 94, 353, 98, 350, 98, 349, 102, 348, 106, 349, 109, 353, 111, 355, 112, 353, 114, 352, 117, 352, 121, 352, 125, 353, 128, 356, 127, 360, 123, 362, 123, 362, 137, 366, 142, 367, 143, 368, 142, 368, 142, 368, 142, 367, 152, 373, 158, 378, 152, 380, 146, 382, 142)
