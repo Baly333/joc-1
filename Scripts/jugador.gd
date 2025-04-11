@@ -7,11 +7,3 @@ func _process(delta: float) -> void:
 	direccio = Input.get_axis("moure_esquerra","moure_dreta")
 	velocity = Vector2 (direccio * velocitat, 0)
 	move_and_slide()
-
-
- 
-	
-
-
-func _on_obstacle_body_entered(body: Node2D) -> void:
-	$obstacle._disapear()
