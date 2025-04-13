@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://y5ioubavxr3w"]
+[gd_scene load_steps=9 format=3 uid="uid://y5ioubavxr3w"]
 
 [ext_resource type="PackedScene" uid="uid://bj30njbmgxaqa" path="res://Scenes/jugador.tscn" id="1_6ghnx"]
 [ext_resource type="Script" uid="uid://muvqsjsa8d4n" path="res://Scripts/jugador.gd" id="2_nm3pk"]
-[ext_resource type="PackedScene" uid="uid://bdgu3dnjhglwt" path="res://Scenes/obstacle.tscn" id="3_jg0rr"]
+[ext_resource type="PackedScene" uid="uid://bdgu3dnjhglwt" path="res://Scripts/obstacle.tscn" id="3_jg0rr"]
 [ext_resource type="Script" uid="uid://2ghl7t3ax2pw" path="res://Scripts/obstacle.gd" id="4_wpljn"]
+[ext_resource type="Script" uid="uid://bm2l3fwx1nvu5" path="res://Scripts/obstacle2.gd" id="5_24cc3"]
+[ext_resource type="Script" uid="uid://b0ou8j28h6d3r" path="res://Scripts/obstacle3.gd" id="6_s40u6"]
+[ext_resource type="Script" uid="uid://ftnube1onm5v" path="res://Scripts/obstacle4.gd" id="7_4gy41"]
+[ext_resource type="Script" uid="uid://nkljae8dsawy" path="res://Scripts/obstacle5.gd" id="8_w17s0"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -12,32 +16,50 @@ position = Vector2(-92, 386)
 script = ExtResource("2_nm3pk")
 
 [node name="Obstacle" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(43, -41)
+position = Vector2(37, -45)
 script = ExtResource("4_wpljn")
+
+[node name="Timer" type="Timer" parent="Obstacle"]
 
 [node name="Obstacle2" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(347, -48)
-script = ExtResource("4_wpljn")
+position = Vector2(114, -44)
+script = ExtResource("5_24cc3")
+
+[node name="Timer" type="Timer" parent="Obstacle2"]
+wait_time = 0.5
 
 [node name="Obstacle3" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(274, -43)
-script = ExtResource("4_wpljn")
+position = Vector2(184, -47)
+script = ExtResource("6_s40u6")
+
+[node name="Timer" type="Timer" parent="Obstacle3"]
 
 [node name="Obstacle4" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(194, -43)
-script = ExtResource("4_wpljn")
+position = Vector2(264, -46)
+script = ExtResource("7_4gy41")
+
+[node name="Timer" type="Timer" parent="Obstacle4"]
+wait_time = 1.5
 
 [node name="Obstacle5" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(116, -41)
-script = ExtResource("4_wpljn")
+position = Vector2(332, -47)
+script = ExtResource("8_w17s0")
+
+[node name="Timer" type="Timer" parent="Obstacle5"]
+wait_time = 2.0
 
 [connection signal="body_entered" from="Obstacle" to="Jugador" method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="Obstacle" to="Obstacle" method="_on_body_entered"]
+[connection signal="timeout" from="Obstacle/Timer" to="Obstacle" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Obstacle2" to="Jugador" method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="Obstacle2" to="Obstacle2" method="_on_body_entered"]
+[connection signal="timeout" from="Obstacle2/Timer" to="Obstacle2" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Obstacle3" to="Jugador" method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="Obstacle3" to="Obstacle3" method="_on_body_entered"]
+[connection signal="timeout" from="Obstacle3/Timer" to="Obstacle3" method="_on_timer_2_timeout"]
 [connection signal="body_entered" from="Obstacle4" to="Jugador" method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="Obstacle4" to="Obstacle4" method="_on_body_entered"]
+[connection signal="timeout" from="Obstacle4/Timer" to="Obstacle4" method="_on_timer_3_timeout"]
 [connection signal="body_entered" from="Obstacle5" to="Jugador" method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="Obstacle5" to="Obstacle5" method="_on_body_entered"]
+[connection signal="timeout" from="Obstacle5/Timer" to="Obstacle5" method="_on_timer_4_timeout"]
