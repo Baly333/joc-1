@@ -5,7 +5,6 @@ var current_level := 0
 func _ready() -> void:
 	$TimerDemo.start()
 	$GameOver.visible = false
-	$Timerjoc.start()
 	$Nivell.visible = false
 	$Vides.visible = false
 func _on_timer_demo_timeout() -> void:
@@ -13,6 +12,7 @@ func _on_timer_demo_timeout() -> void:
 	$Vides.visible = true
 	$Nivell.visible = true
 	$TimerFirstLevel.start()
+	$Timerjoc.start()
 func _on_timer_first_level_timeout() -> void:
 	$Nivell.visible = false
 func perdre_vida():
@@ -41,6 +41,7 @@ func _on_timerjoc_timeout() -> void:
 	$Nivell.text = "Level " + str(current_level)
 	$Nivell.visible = true
 	$TimerEtiqueta.start()
+	$Timerjoc.start()
 
 func _on_timer_etiqueta_timeout() -> void:
 	$Nivell.visible = false

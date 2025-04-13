@@ -36,6 +36,7 @@ script = ExtResource("1_ceeyd")
 wait_time = 10.0
 
 [node name="TimerEtiqueta" type="Timer" parent="."]
+one_shot = true
 
 [node name="Nivell" type="Label" parent="."]
 offset_top = 52.0
@@ -171,8 +172,10 @@ autowrap_mode = 2
 
 [node name="TimerDemo" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
 
 [node name="TimerFirstLevel" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Timerjoc" to="." method="_on_timerjoc_timeout"]
 [connection signal="timeout" from="TimerEtiqueta" to="." method="_on_timer_etiqueta_timeout"]
