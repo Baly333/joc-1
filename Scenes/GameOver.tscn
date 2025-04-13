@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc72yplrh84q8"]
+
+[ext_resource type="Script" uid="uid://byuykikd2d17w" path="res://Scripts/Game_Over.gd" id="1_m5628"]
+[ext_resource type="FontFile" uid="uid://bjv2evc6hqjuf" path="res://Text/snow_blue/SNOW BLUE.otf" id="2_k52d1"]
+[ext_resource type="Texture2D" uid="uid://b8fpseyd2xxit" path="res://Imatges/istockphoto-472163939-612x612.jpg" id="2_ktc4i"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5628")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.88235, 1.58824)
+texture = ExtResource("2_ktc4i")
+
+[node name="GameOver" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_fonts/font = ExtResource("2_k52d1")
+theme_override_font_sizes/font_size = 125
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="."]
+layout_mode = 1
+offset_left = 318.0
+offset_top = 441.0
+offset_right = 834.0
+offset_bottom = 537.0
+theme_override_fonts/font = ExtResource("2_k52d1")
+theme_override_font_sizes/font_size = 50
+text = "Tornar a jugar"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

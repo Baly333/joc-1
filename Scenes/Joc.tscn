@@ -1,65 +1,200 @@
-[gd_scene load_steps=9 format=3 uid="uid://y5ioubavxr3w"]
+[gd_scene load_steps=23 format=3 uid="uid://y5ioubavxr3w"]
 
 [ext_resource type="PackedScene" uid="uid://bj30njbmgxaqa" path="res://Scenes/jugador.tscn" id="1_6ghnx"]
+[ext_resource type="Script" uid="uid://bet5wx63xmge6" path="res://Scripts/joc.gd" id="1_ceeyd"]
+[ext_resource type="FontFile" uid="uid://kyqqxr7mtqqr" path="res://Text/freezing/Freezing.ttf" id="2_j0da7"]
 [ext_resource type="Script" uid="uid://muvqsjsa8d4n" path="res://Scripts/jugador.gd" id="2_nm3pk"]
-[ext_resource type="PackedScene" uid="uid://bdgu3dnjhglwt" path="res://Scripts/obstacle.tscn" id="3_jg0rr"]
+[ext_resource type="PackedScene" uid="uid://bdgu3dnjhglwt" path="res://Scenes/obstacle.tscn" id="3_jg0rr"]
 [ext_resource type="Script" uid="uid://2ghl7t3ax2pw" path="res://Scripts/obstacle.gd" id="4_wpljn"]
 [ext_resource type="Script" uid="uid://bm2l3fwx1nvu5" path="res://Scripts/obstacle2.gd" id="5_24cc3"]
 [ext_resource type="Script" uid="uid://b0ou8j28h6d3r" path="res://Scripts/obstacle3.gd" id="6_s40u6"]
 [ext_resource type="Script" uid="uid://ftnube1onm5v" path="res://Scripts/obstacle4.gd" id="7_4gy41"]
+[ext_resource type="PackedScene" uid="uid://6mad2khpqc5h" path="res://Scenes/obstacle_3.tscn" id="8_s40u6"]
 [ext_resource type="Script" uid="uid://nkljae8dsawy" path="res://Scripts/obstacle5.gd" id="8_w17s0"]
+[ext_resource type="PackedScene" uid="uid://vhmycpbg10mb" path="res://Scenes/obstacle_4.tscn" id="9_4gy41"]
+[ext_resource type="PackedScene" uid="uid://dng52556txbq6" path="res://Scenes/obstacle_6.tscn" id="9_s40u6"]
+[ext_resource type="PackedScene" uid="uid://bsvkuqgtf2tm5" path="res://Scenes/obstacle_5.tscn" id="10_w17s0"]
+[ext_resource type="Script" uid="uid://dmokupf22i8pt" path="res://Scripts/obstacle_6.gd" id="12_7yfvx"]
+[ext_resource type="Texture2D" uid="uid://o8tpuw6e1fxp" path="res://Imatges/Pared_gel.jpg" id="15_2dygh"]
+[ext_resource type="FontFile" uid="uid://bjv2evc6hqjuf" path="res://Text/snow_blue/SNOW BLUE.otf" id="16_bqfcc"]
+[ext_resource type="PackedScene" uid="uid://crdp64gcrlf05" path="res://Scenes/obstacle_7.tscn" id="16_f1cs3"]
+[ext_resource type="Script" uid="uid://c5pp7vns2c585" path="res://Scripts/obstacle_7.gd" id="17_bqfcc"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w17s0"]
+size = Vector2(1163, 39)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yfvx"]
+size = Vector2(11, 675)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqfcc"]
+size = Vector2(296, 437.035)
+
+[node name="joc" type="Node2D"]
+script = ExtResource("1_ceeyd")
+
+[node name="Timerjoc" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="TimerEtiqueta" type="Timer" parent="."]
+
+[node name="Nivell" type="Label" parent="."]
+offset_top = 52.0
+offset_right = 1151.0
+offset_bottom = 247.0
+theme_override_fonts/font = ExtResource("2_j0da7")
+theme_override_font_sizes/font_size = 100
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Jugador" parent="." instance=ExtResource("1_6ghnx")]
-position = Vector2(-92, 386)
+position = Vector2(-76, 389)
 script = ExtResource("2_nm3pk")
 
+[node name="Terra" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Terra"]
+position = Vector2(570, 838.947)
+rotation = -3.14159
+scale = Vector2(1.81699, 1.03967)
+texture = ExtResource("15_2dygh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terra"]
+position = Vector2(580, 647.5)
+shape = SubResource("RectangleShape2D_w17s0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Terra"]
+position = Vector2(-4.5, 327.5)
+shape = SubResource("RectangleShape2D_7yfvx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Terra"]
+position = Vector2(1157, 330)
+shape = SubResource("RectangleShape2D_7yfvx")
+
 [node name="Obstacle" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(37, -45)
 script = ExtResource("4_wpljn")
 
 [node name="Timer" type="Timer" parent="Obstacle"]
+wait_time = 5.0
+one_shot = true
 
-[node name="Obstacle2" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(114, -44)
+[node name="Obstacle2" parent="." instance=ExtResource("9_s40u6")]
 script = ExtResource("5_24cc3")
 
 [node name="Timer" type="Timer" parent="Obstacle2"]
-wait_time = 0.5
+wait_time = 5.5
+one_shot = true
 
-[node name="Obstacle3" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(184, -47)
+[node name="Obstacle3" parent="." instance=ExtResource("8_s40u6")]
 script = ExtResource("6_s40u6")
 
 [node name="Timer" type="Timer" parent="Obstacle3"]
+wait_time = 6.0
+one_shot = true
 
-[node name="Obstacle4" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(264, -46)
+[node name="Obstacle4" parent="." instance=ExtResource("9_4gy41")]
 script = ExtResource("7_4gy41")
 
 [node name="Timer" type="Timer" parent="Obstacle4"]
-wait_time = 1.5
+wait_time = 6.5
+one_shot = true
 
-[node name="Obstacle5" parent="." instance=ExtResource("3_jg0rr")]
-position = Vector2(332, -47)
+[node name="Obstacle5" parent="." instance=ExtResource("10_w17s0")]
 script = ExtResource("8_w17s0")
 
 [node name="Timer" type="Timer" parent="Obstacle5"]
-wait_time = 2.0
+wait_time = 7.0
+one_shot = true
 
+[node name="Obstacle6" parent="." instance=ExtResource("9_s40u6")]
+script = ExtResource("12_7yfvx")
+
+[node name="Timer" type="Timer" parent="Obstacle6"]
+wait_time = 7.5
+one_shot = true
+
+[node name="Vides" type="Label" parent="."]
+offset_left = 6.0
+offset_right = 1157.0
+offset_bottom = 107.0
+theme_override_fonts/font = ExtResource("16_bqfcc")
+theme_override_font_sizes/font_size = 30
+text = "Vides: 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 97.0
+offset_bottom = 52.0
+
+[node name="Obstacle7" parent="." instance=ExtResource("16_f1cs3")]
+script = ExtResource("17_bqfcc")
+
+[node name="Timer" type="Timer" parent="Obstacle7"]
+wait_time = 8.0
+one_shot = true
+
+[node name="Parets" type="StaticBody2D" parent="."]
+
+[node name="ParedGel1" type="Sprite2D" parent="Parets"]
+position = Vector2(-313, 362)
+scale = Vector2(1.14706, 1.96552)
+texture = ExtResource("15_2dygh")
+
+[node name="ParedGel2" type="Sprite2D" parent="Parets"]
+position = Vector2(1465, 365)
+scale = Vector2(1.15686, 1.96552)
+texture = ExtResource("15_2dygh")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Parets"]
+position = Vector2(-131.765, 344.5)
+scale = Vector2(1.14706, 1.96552)
+shape = SubResource("RectangleShape2D_bqfcc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Parets"]
+position = Vector2(1281, 389)
+scale = Vector2(1.14706, 1.96552)
+shape = SubResource("RectangleShape2D_bqfcc")
+
+[node name="Demo" type="Label" parent="."]
+offset_left = 38.0
+offset_top = 52.0
+offset_right = 1111.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 52
+text = "Utilitza A,D o les fletxes dreta/esquerra per esquivar els pics de gel. Cada 10 segons, serà més dificil i pujaràs de nivell. Bona Sort!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TimerDemo" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="TimerFirstLevel" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timerjoc" to="." method="_on_timerjoc_timeout"]
+[connection signal="timeout" from="TimerEtiqueta" to="." method="_on_timer_etiqueta_timeout"]
 [connection signal="body_entered" from="Obstacle" to="Jugador" method="_on_obstacle_body_entered"]
 [connection signal="body_entered" from="Obstacle" to="Obstacle" method="_on_body_entered"]
 [connection signal="timeout" from="Obstacle/Timer" to="Obstacle" method="_on_timer_timeout"]
-[connection signal="body_entered" from="Obstacle2" to="Jugador" method="_on_obstacle_body_entered"]
+[connection signal="body_entered" from="Obstacle2" to="Jugador" method="_on_obstacle_2_body_entered"]
 [connection signal="body_entered" from="Obstacle2" to="Obstacle2" method="_on_body_entered"]
 [connection signal="timeout" from="Obstacle2/Timer" to="Obstacle2" method="_on_timer_timeout"]
-[connection signal="body_entered" from="Obstacle3" to="Jugador" method="_on_obstacle_body_entered"]
+[connection signal="body_entered" from="Obstacle3" to="Jugador" method="_on_obstacle_3_body_entered"]
 [connection signal="body_entered" from="Obstacle3" to="Obstacle3" method="_on_body_entered"]
-[connection signal="timeout" from="Obstacle3/Timer" to="Obstacle3" method="_on_timer_2_timeout"]
-[connection signal="body_entered" from="Obstacle4" to="Jugador" method="_on_obstacle_body_entered"]
+[connection signal="timeout" from="Obstacle3/Timer" to="Obstacle3" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Obstacle4" to="Jugador" method="_on_obstacle_4_body_entered"]
 [connection signal="body_entered" from="Obstacle4" to="Obstacle4" method="_on_body_entered"]
-[connection signal="timeout" from="Obstacle4/Timer" to="Obstacle4" method="_on_timer_3_timeout"]
-[connection signal="body_entered" from="Obstacle5" to="Jugador" method="_on_obstacle_body_entered"]
+[connection signal="timeout" from="Obstacle4/Timer" to="Obstacle4" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Obstacle5" to="Jugador" method="_on_obstacle_5_body_entered"]
 [connection signal="body_entered" from="Obstacle5" to="Obstacle5" method="_on_body_entered"]
-[connection signal="timeout" from="Obstacle5/Timer" to="Obstacle5" method="_on_timer_4_timeout"]
+[connection signal="timeout" from="Obstacle5/Timer" to="Obstacle5" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Obstacle6" to="Jugador" method="_on_obstacle_6_body_entered"]
+[connection signal="body_entered" from="Obstacle6" to="Obstacle6" method="_on_body_entered"]
+[connection signal="timeout" from="Obstacle6/Timer" to="Obstacle6" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Obstacle7" to="Obstacle7" method="_on_body_entered"]
+[connection signal="timeout" from="Obstacle7/Timer" to="Obstacle7" method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerDemo" to="." method="_on_timer_demo_timeout"]
+[connection signal="timeout" from="TimerFirstLevel" to="." method="_on_timer_first_level_timeout"]
